@@ -1,5 +1,4 @@
 import ScrollReveal from "./ScrollReveal";
-
 export default function StrengthSection() {
   return (
     <section className="bg-zinc-50 py-32">

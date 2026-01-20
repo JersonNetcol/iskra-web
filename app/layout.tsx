@@ -1,4 +1,7 @@
 import Navbar from "../componets/Navbar";
+import { ChatProvider } from "../componets/ChatContext";
+import ChatBot from "../componets/ChatBot";
+import ChatBubble from "../componets/ChatBubble";
 import "./globals.css";
 
 export default function RootLayout({
@@ -9,8 +12,14 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body>
-        <Navbar />
-        {children}
+        <ChatProvider>
+          <Navbar />
+          {children}
+
+          {/* ESTOS DOS SON CLAVE */}
+          <ChatBubble />
+          <ChatBot />
+        </ChatProvider>
       </body>
     </html>
   );
