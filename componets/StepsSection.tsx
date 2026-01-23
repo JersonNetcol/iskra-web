@@ -4,31 +4,45 @@ export default function StepsSection() {
   const steps = [
     {
       number: "01",
-      title: "Descubrimos tu marca",
-      text:
-        "Analizamos tu negocio, tus valores y tu público objetivo para diseñar la estrategia perfecta.",
+      title: "Diagnóstico y definición de objetivos",
+      text: "Análisis profundo de necesidades, audiencias y oportunidades estratégicas.",
       color: "bg-pink-500",
     },
     {
       number: "02",
-      title: "Diseñamos campañas inteligentes",
-      text:
-        "Creamos conceptos creativos y soluciones de marketing que conectan con tu audiencia.",
+      title: "Diseño estratégico y concepto creativo",
+      text: "Desarrollo de la narrativa y propuesta de valor única para la campaña.",
       color: "bg-purple-500",
     },
     {
       number: "03",
-      title: "Conectamos con tu público",
-      text:
-        "Gestionamos influencers y canales adecuados para que tu mensaje llegue con fuerza y rapidez.",
+      title: "Selección y curaduría de creadores",
+      text: "Validación rigurosa de perfiles alineados con objetivos y audiencias.",
       color: "bg-blue-500",
     },
     {
       number: "04",
-      title: "Medimos y optimizamos resultados",
-      text:
-        "Evaluamos cada campaña, ajustamos estrategias y maximizamos el retorno de inversión.",
+      title: "Negociación y contratación profesional",
+      text: "Asesoramiento experto en términos, alcances y condiciones contractuales.",
       color: "bg-emerald-500",
+    },
+    {
+      number: "05",
+      title: "Producción y publicación de contenido",
+      text: "Dirección creativa y lineamientos para contenido auténtico y estratégico.",
+      color: "bg-orange-500",
+    },
+    {
+      number: "06",
+      title: "Medición de impacto y optimización",
+      text: "Análisis de resultados, insights accionables y mejora continua.",
+      color: "bg-teal-500",
+    },
+    {
+      number: "07",
+      title: "Seguimiento y control de calidad",
+      text: "Monitoreo continuo del desempeño y cumplimiento de estándares.",
+      color: "bg-indigo-500",
     },
   ];
 
@@ -60,11 +74,7 @@ export default function StepsSection() {
 
               return (
                 <ScrollReveal key={index} delay={index * 150}>
-                  <div
-                    className={`relative flex ${
-                      isRight ? "justify-start" : "justify-end"
-                    }`}
-                  >
+                  <div className={`relative flex ${isRight ? "justify-start" : "justify-end"}`}>
                     {/* Contenido */}
                     <div
                       className={`w-full md:w-[45%] ${
