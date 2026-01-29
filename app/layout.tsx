@@ -3,7 +3,6 @@ import Footer from "../componets/Footer";
 import { ChatProvider } from "../componets/ChatContext";
 import ChatBot from "../componets/ChatBot";
 import ChatBubble from "../componets/ChatBubble";
-import SpeedInsightsClient from "./SpeedInsightsClient";
 import "./globals.css";
 
 
@@ -62,21 +61,20 @@ export default function RootLayout({
                 "https://www.linkedin.com/company/tuLinkedin",
               ],
               description:
-                "Iskra es una agencia de publicidad especializada en marketing de influencia, posicionamiento de marca y estrategias digitales creativas",
+                "Iskra es una agencia de publicidad especializada en marketing de influencia, posicionamiento de marca y estrategias digitales creativas.",
             }),
           }}
         />
       </head>
       <body className="bg-black text-white">
         <ChatProvider>
-  <Navbar />
-  {children}
-  <SpeedInsightsClient />
-  <Footer />
-  <ChatBubble />
-  <ChatBot />
-</ChatProvider>
-
+          <Navbar />
+          {children}
+          <Footer />
+          {/* Chat global */}
+          <ChatBubble />
+          <ChatBot />
+        </ChatProvider>
       </body>
     </html>
   );
