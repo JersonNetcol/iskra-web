@@ -8,7 +8,7 @@ import { useChat } from "./ChatContext";
 ========================= */
 function TypewriterText() {
   const text =
-    "Marketing de influencia y posicionamiento de marca con criterio estratégico.";
+    "Iskraes una agencia de publicidad y marketing digital especializada en marketing de influencia,construcción de marca y campañas estratégicas con creadores, actores y talentos digitales en Colombia.";
 
   const [displayedText, setDisplayedText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
@@ -60,48 +60,41 @@ export default function Hero() {
         loop
         muted
         playsInline
-        className="absolute inset-0 w-full h-full object-cover"
+        className="absolute inset-0 h-full w-full object-cover"
       >
         <source src="/videos/hero-video.mp4" type="video/mp4" />
       </video>
 
-      <div className="relative z-10 h-full flex items-center justify-center px-6">
+      <div className="relative z-10 flex h-full items-center justify-center px-6">
         <div className="max-w-4xl text-center">
-          <h1 className="text-4xl md:text-6xl font-semibold leading-tight text-white">
-  Agencia de publicidad enfocada en
-  <span className="block">influencia y resultados reales</span>
-</h1>
-
-
-          <p className="mt-4 text-sm md:text-base text-white/80 max-w-2xl mx-auto leading-relaxed">
-            <strong>Iskra</strong> es una{" "}
-            <strong>agencia de publicidad y marketing digital</strong>
-            especializada en <strong>marketing de influencia</strong>,
-            construcción de marca y campañas estratégicas con creadores, actores
-            y talentos digitales en Colombia.
-          </p>
+          <h1 className="text-4xl font-semibold leading-tight text-white md:text-6xl">
+            Agencia de publicidad enfocada en
+            <span className="block">influencia y resultados reales</span>
+          </h1>
 
           {/* ✨ TYPEWRITER */}
           <TypewriterText />
 
           {/* BOTONES */}
-          <div className="mt-12 flex flex-col sm:flex-row gap-6 justify-center animate-rise delay-3">
+          <div className="mt-12 flex flex-col items-center gap-6 sm:flex-row sm:justify-center">
+            {/* BOTÓN 1 */}
             <button
               onClick={() => setOpen(true)}
-              className="relative inline-flex rounded-full p-[3px] overflow-hidden group"
+              className="group relative flex w-full max-w-xs justify-center rounded-full p-[3px] overflow-hidden sm:w-auto"
             >
-              <span className="absolute inset-0 rounded-full spark-border pointer-events-none" />
-              <span className="relative z-10 rounded-full bg-black/80 px-8 py-3 text-lg text-white font-semibold tracking-wide hover:bg-white hover:text-black transition">
+              <span className="pointer-events-none absolute inset-0 rounded-full spark-border" />
+              <span className="relative z-10 w-full rounded-full bg-black/80 px-8 py-3 text-center text-base font-semibold tracking-wide text-white transition hover:bg-white hover:text-black sm:text-lg">
                 Cotizar
               </span>
             </button>
 
+            {/* BOTÓN 2 */}
             <button
               onClick={() => setOpen(true)}
-              className="relative inline-flex rounded-full p-[3px] overflow-hidden group"
+              className="group relative flex w-full max-w-xs justify-center rounded-full p-[3px] overflow-hidden sm:w-auto"
             >
-              <span className="absolute inset-0 rounded-full spark-border pointer-events-none" />
-              <span className="relative z-10 rounded-full bg-black/80 px-8 py-3 text-lg text-white font-semibold tracking-wide hover:bg-white hover:text-black transition">
+              <span className="pointer-events-none absolute inset-0 rounded-full spark-border" />
+              <span className="relative z-10 w-full rounded-full bg-black/80 px-8 py-3 text-center text-base font-semibold tracking-wide text-white transition hover:bg-white hover:text-black sm:text-lg">
                 ¿Quieres ser influencer?
               </span>
             </button>

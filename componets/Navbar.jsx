@@ -3,17 +3,29 @@
 import { useState, useEffect } from "react";
 import { useChat } from "./ChatContext";
 import Image from "next/image";
+import Link from "next/link";
+import { useRouter, usePathname } from "next/navigation";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const { setOpen } = useChat();
   const [menuOpen, setMenuOpen] = useState(false);
+  const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const handleNavClick = (id) => {
+    if (pathname !== "/") {
+      router.push(`/#${id}`);
+    } else {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <header className="fixed top-0 left-0 w-full z-50">
@@ -94,47 +106,33 @@ export default function Navbar() {
         {/* MENÚ */}
         <ul className="hidden md:flex gap-12 text-white/90 text-sm tracking-wide">
           <li
-            onClick={() =>
-              document
-                .getElementById("inicio")
-                ?.scrollIntoView({ behavior: "smooth" })
-            }
+            onClick={() => handleNavClick("inicio")}
             className="cursor-pointer hover:text-white transition"
           >
             Inicio
           </li>
           <li
-            onClick={() =>
-              document
-                .getElementById("¿Por qué elegirnos?")
-                ?.scrollIntoView({ behavior: "smooth" })
-            }
+            onClick={() => handleNavClick("por-que-elegirnos")}
             className="cursor-pointer hover:text-white transition"
           >
             ¿Por qué elegirnos?
           </li>
 
           <li
-            onClick={() =>
-              document
-                .getElementById("nosotros")
-                ?.scrollIntoView({ behavior: "smooth" })
-            }
+            onClick={() => handleNavClick("nuestro-metodo")}
             className="cursor-pointer hover:text-white transition"
           >
-            Nosotros
+            Nuestro método
           </li>
 
-          <li
-            onClick={() =>
-              document
-                .getElementById("contacto")
-                ?.scrollIntoView({ behavior: "smooth" })
-            }
-            className="cursor-pointer hover:text-white transition"
-          >
-            Contáctanos
+          <li className="hover:text-white transition">
+            <Link href="/servicios">Servicios</Link>
           </li>
+
+          <li className="hover:text-white transition">
+            <Link href="/colaboraciones">Colaboraciones</Link>
+          </li>
+
           
         </ul>
         {/* ☰ BOTÓN MOBILE */}
@@ -166,9 +164,7 @@ export default function Navbar() {
           <div className="mx-4 mt-4 rounded-2xl bg-black/80 backdrop-blur-lg p-6 text-white space-y-6 shadow-xl">
             <p
               onClick={() => {
-                document
-                  .getElementById("inicio")
-                  ?.scrollIntoView({ behavior: "smooth" });
+                handleNavClick("inicio");
                 setMenuOpen(false);
               }}
               className="cursor-pointer hover:opacity-80"
@@ -176,40 +172,42 @@ export default function Navbar() {
               Inicio
             </p>
 
-            <p
-              onClick={() => {
-                document
-                  .getElementById("nosotros")
-                  ?.scrollIntoView({ behavior: "smooth" });
-                setMenuOpen(false);
-              }}
-              className="cursor-pointer hover:opacity-80"
+            <Link
+              href="/servicios"
+              onClick={() => setMenuOpen(false)}
+              className="block hover:opacity-80"
             >
-              Nosotros
-            </p>
+              Servicios
+            </Link>
+
+            <Link
+              href="/colaboraciones"
+              onClick={() => setMenuOpen(false)}
+              className="block hover:opacity-80"
+            >
+              Colaboraciones
+            </Link>
 
             <p
               onClick={() => {
-                document
-                  .getElementById("contacto")
-                  ?.scrollIntoView({ behavior: "smooth" });
+                handleNavClick("por-que-elegirnos");
                 setMenuOpen(false);
               }}
               className="cursor-pointer hover:opacity-80"
             >
               ¿Por qué elegirnos?
             </p>
+
             <p
               onClick={() => {
-                document
-                  .getElementById("contacto")
-                  ?.scrollIntoView({ behavior: "smooth" });
+                handleNavClick("nuestro-metodo");
                 setMenuOpen(false);
               }}
               className="cursor-pointer hover:opacity-80"
             >
-              Contáctanos
+              Nuestro método
             </p>
+            
           </div>
         </div>
       )}

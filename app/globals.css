@@ -334,3 +334,37 @@ body {
     opacity: 0.5;
   }
 }
+
+.footer-link {
+  @apply text-neutral-400 transition hover:text-purple-400;
+}
+
+.footer-icon {
+  @apply flex h-9 w-9 items-center justify-center rounded-full
+         border border-neutral-800 transition;
+}
+
+.footer-icon:hover {
+  @apply border-purple-500 shadow-[0_0_12px_rgba(168,85,247,0.4)];
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+@keyframes blink {
+  0%, 50%, 100% {
+    opacity: 1;
+  }
+  25%, 75% {
+    opacity: 0;
+  }
+}
+
+.animate-blink {
+  animation: blink 1s infinite;
+}
+
+

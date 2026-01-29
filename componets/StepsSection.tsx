@@ -47,7 +47,7 @@ export default function StepsSection() {
   ];
 
   return (
-    <section className="py-28 bg-neutral-950 text-white">
+    <section id="nuestro-metodo" className="py-28 bg-neutral-950 text-white">
       <div className="max-w-6xl mx-auto px-6">
         {/* Título */}
         <ScrollReveal>
@@ -74,7 +74,9 @@ export default function StepsSection() {
 
               return (
                 <ScrollReveal key={index} delay={index * 150}>
-                  <div className={`relative flex ${isRight ? "justify-start" : "justify-end"}`}>
+                  <div
+                    className={`relative flex ${isRight ? "justify-start" : "justify-end"}`}
+                  >
                     {/* Contenido */}
                     <div
                       className={`w-full md:w-[45%] ${

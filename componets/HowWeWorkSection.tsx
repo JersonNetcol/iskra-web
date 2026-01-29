@@ -1,95 +1,92 @@
 "use client";
 
+import Image from "next/image";
+import { motion } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
-import { motion, useAnimation, Variants } from "framer-motion";
-import { useInView } from "react-intersection-observer";
 
-interface AnimatedInfluencerImageProps {
-  src: string;
-  index: number;
-}
-
-const influencerImages = [
-  "/images/influencer/juan.jpg",
-  "/images/influencer2.jpg",
-  "/images/influencer3.jpg",
-  "/images/influencer4.jpg",
-];
-
-function AnimatedInfluencerImage({ src, index }: AnimatedInfluencerImageProps) {
-  const controls = useAnimation();
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
-
-  const variants: Variants = {
-    hidden: { x: index % 2 === 0 ? -200 : 200, opacity: 0, scale: 0.8 },
-    visible: { x: 0, opacity: 1, scale: 1, transition: { duration: 1 + index * 0.3 } },
-  };
-
-  if (inView) controls.start("visible");
-
-  return (
-    <motion.img
-      ref={ref}
-      src={src}
-      alt={`Influencer ${index + 1}`}
-      className="absolute top-0 left-1/2 w-48 h-48 object-cover rounded-full shadow-lg"
-      style={{ zIndex: -index }}
-      initial="hidden"
-      animate={controls}
-      variants={variants}
-    />
-  );
-}
-
-export default function HowWeWorkSection() {
+export default function TeamSection() {
   return (
     <section className="relative bg-white py-32 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6">
-
-        {/* TÍTULO */}
-        <ScrollReveal>
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-semibold text-black mb-4">
-              Cómo trabajamos en Iskra
+      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-20 items-center">
+        {/* TEXTO */}
+        <div>
+          <ScrollReveal>
+            <h2 className="text-4xl md:text-5xl font-semibold text-black mb-8">
+              Nuestro equipo
             </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-              Un proceso estratégico, creativo y enfocado en resultados reales.
-            </p>
-          </div>
-        </ScrollReveal>
+          </ScrollReveal>
 
-        {/* PASOS */}
-        <div className="grid md:grid-cols-4 gap-12 relative z-10">
-          {[{
-            title: "Análisis y estrategia",
-            description: "Entendemos tu marca, tu mercado y tus objetivos para construir una estrategia clara desde el inicio."
-          }, {
-            title: "Concepto creativo",
-            description: "Creamos ideas visuales y mensajes que conectan con tu audiencia y fortalecen tu marca."
-          }, {
-            title: "Ejecución precisa",
-            description: "Implementamos la estrategia en los canales correctos con enfoque en impacto y conversión."
-          }, {
-            title: "Medición y optimización",
-            description: "Analizamos resultados, optimizamos campañas y maximizamos el retorno de inversión."
-          }].map((step, index) => (
-            <ScrollReveal key={index} delay={index * 100}>
-              <div className="text-center">
-                <span className="text-5xl font-bold text-black/10 block mb-4">
-                  {`0${index + 1}`}
-                </span>
-                <h3 className="text-lg font-semibold mb-3">{step.title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{step.description}</p>
-              </div>
-            </ScrollReveal>
-          ))}
+          <ScrollReveal delay={100}>
+            <p className="text-xl text-gray-700 leading-relaxed mb-10">
+              Iskra está conformada por un equipo multidisciplinario de
+              profesionales en estrategia, creatividad y gestión de campañas.
+              Cada proyecto se desarrolla con especialistas que se activan de
+              acuerdo con los objetivos y necesidades de cada marca.
+            </p>
+          </ScrollReveal>
+
+          <div className="grid gap-6 mb-12">
+            {[
+              "Equipo multidisciplinario activado según cada proyecto",
+              "Pensamiento estratégico antes que tendencias vacías",
+              "Creatividad con criterio, no improvisación",
+            ].map((text, i) => (
+              <ScrollReveal key={i} delay={200 + i * 100}>
+                <div className="flex items-start gap-4">
+                  <span className="mt-2 h-2 w-2 rounded-full bg-purple-500" />
+                  <p className="text-gray-600 text-base">{text}</p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+
+          <ScrollReveal delay={500}>
+            <p className="text-lg text-gray-800 leading-relaxed mb-6">
+              Este modelo de trabajo ha sido diseñado para asegurar flexibilidad
+              operativa, eficiencia en la gestión y un alto nivel de
+              especialización en cada fase de los proyectos.
+            </p>
+          </ScrollReveal>
+
+          <ScrollReveal delay={500}>
+            <p className="text-lg text-gray-900 font-medium leading-relaxed">
+              La dirección estratégica y la supervisión directa de los proyectos
+              son asumidas personalmente, con el objetivo de garantizar
+              coherencia, solidez estratégica y una orientación constante hacia
+              resultados medibles.
+            </p>
+          </ScrollReveal>
         </div>
 
-        {/* IMÁGENES DINÁMICAS DE INFLUENCERS */}
-        {influencerImages.map((src, index) => (
-          <AnimatedInfluencerImage key={index} src={src} index={index} />
-        ))}
+        {/* IMAGEN DINÁMICA */}
+        <div className="relative flex justify-center">
+          {/* Glow animado */}
+          <motion.div
+            className="absolute -inset-6 rounded-full bg-purple-500/20 blur-3xl"
+            animate={{ scale: [1, 1.1, 1] }}
+            transition={{ duration: 4, repeat: Infinity }}
+          />
 
+          {/* Marco */}
+          <motion.div
+            className="relative rounded-3xl border border-black/10 p-2"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <Image
+              src="/images/ceña4.png"
+              alt="Founder Iskra"
+              width={420}
+              height={520}
+              className="rounded-2xl object-cover"
+            />
+
+            {/* Overlay */}
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-black/40 to-transparent" />
+          </motion.div>
+        </div>
       </div>
     </section>
   );

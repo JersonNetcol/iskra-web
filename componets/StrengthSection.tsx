@@ -2,7 +2,7 @@ import ScrollReveal from "./ScrollReveal";
 
 export default function StrengthSection() {
   return (
-    <section id="¿Por qué elegirnos?" className="bg-zinc-50 py-32">
+    <section id="por-que-elegirnos" className="bg-zinc-50 py-32">
       <div className="max-w-6xl mx-auto px-6">
         {/* HEADER */}
         <ScrollReveal>
