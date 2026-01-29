@@ -6,7 +6,10 @@ import ScrollReveal from "./ScrollReveal";
 
 export default function TeamSection() {
   return (
-    <section className="relative bg-white py-32 overflow-hidden">
+    <section
+      id="nuestro-equipo"
+      className="relative bg-white py-32 overflow-hidden"
+    >
       <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-20 items-center">
         {/* TEXTO */}
         <div>

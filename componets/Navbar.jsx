@@ -119,6 +119,16 @@ export default function Navbar() {
           </li>
 
           <li
+              onClick={() => {
+                handleNavClick("nuestro-equipo");
+                setMenuOpen(false);
+              }}
+              className="cursor-pointer hover:opacity-80"
+            >
+              Equipo
+            </li>
+
+          <li
             onClick={() => handleNavClick("nuestro-metodo")}
             className="cursor-pointer hover:text-white transition"
           >
@@ -132,8 +142,6 @@ export default function Navbar() {
           <li className="hover:text-white transition">
             <Link href="/colaboraciones">Colaboraciones</Link>
           </li>
-
-          
         </ul>
         {/* ☰ BOTÓN MOBILE */}
         <div className="md:hidden flex items-center">
@@ -207,7 +215,16 @@ export default function Navbar() {
             >
               Nuestro método
             </p>
-            
+
+            <p
+              onClick={() => {
+                handleNavClick("nuestro-equipo");
+                setMenuOpen(false);
+              }}
+              className="cursor-pointer hover:opacity-80"
+            >
+              Equipo
+            </p>
           </div>
         </div>
       )}
