@@ -16,7 +16,7 @@ const services = [
       "Diseñamos estrategias dirigidas a influencers, creadores de contenido y artistas, alineadas con los objetivos comerciales de cada marca, enfocadas en impacto, alcance y conversión real.",
   },
   {
-    title: " Estategia creativa",
+    title: " Estrategia creativa",
     description:
       "Somos una empresa especializada en el desarrollo de estrategias creativas para marcas, enfocada en diseñar y ejecutar soluciones que generen conexión, posicionamiento y resultados medibles. Trabajamos con empresas de distintos tamaños, acompañándolas en la definición y evolución de su comunicación a partir de un entendimiento profundo de su identidad, objetivos y audiencia. Nuestro enfoque integra narrativa, estrategia de contenido y ejecución creativa, alineando cada acción con el ADN de la marca y las dinámicas del ecosistema digital. Creemos en la creatividad aplicada estratégicamente como motor de valor, impacto y crecimiento sostenible para el negocio.",
   },

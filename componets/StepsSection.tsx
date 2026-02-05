@@ -2,49 +2,49 @@ import ScrollReveal from "./ScrollReveal";
 
 export default function StepsSection() {
   const steps = [
-    {
-      number: "01",
-      title: "Diagnóstico y definición de objetivos",
-      text: "Análisis profundo de necesidades, audiencias y oportunidades estratégicas.",
-      color: "bg-pink-500",
-    },
-    {
-      number: "02",
-      title: "Diseño estratégico y concepto creativo",
-      text: "Desarrollo de la narrativa y propuesta de valor única para la campaña.",
-      color: "bg-purple-500",
-    },
-    {
-      number: "03",
-      title: "Selección y curaduría de creadores",
-      text: "Validación rigurosa de perfiles alineados con objetivos y audiencias.",
-      color: "bg-blue-500",
-    },
-    {
-      number: "04",
-      title: "Negociación y contratación profesional",
-      text: "Asesoramiento experto en términos, alcances y condiciones contractuales.",
-      color: "bg-emerald-500",
-    },
-    {
-      number: "05",
-      title: "Producción y publicación de contenido",
-      text: "Dirección creativa y lineamientos para contenido auténtico y estratégico.",
-      color: "bg-orange-500",
-    },
-    {
-      number: "06",
-      title: "Medición de impacto y optimización",
-      text: "Análisis de resultados, insights accionables y mejora continua.",
-      color: "bg-teal-500",
-    },
-    {
-      number: "07",
-      title: "Seguimiento y control de calidad",
-      text: "Monitoreo continuo del desempeño y cumplimiento de estándares.",
-      color: "bg-indigo-500",
-    },
-  ];
+  {
+    number: "01",
+    title: "Diagnóstico y definición de objetivos",
+    text: "Análisis profundo de necesidades, audiencias y oportunidades estratégicas.",
+    color: "bg-violet-600",
+  },
+  {
+    number: "02",
+    title: "Diseño estratégico y concepto creativo",
+    text: "Desarrollo de la narrativa y propuesta de valor única para la campaña.",
+    color: "bg-violet-500",
+  },
+  {
+    number: "03",
+    title: "Selección y curaduría de creadores",
+    text: "Validación rigurosa de perfiles alineados con objetivos y audiencias.",
+    color: "bg-purple-500",
+  },
+  {
+    number: "04",
+    title: "Negociación y contratación profesional",
+    text: "Asesoramiento experto en términos, alcances y condiciones contractuales.",
+    color: "bg-purple-400",
+  },
+  {
+    number: "05",
+    title: "Producción y publicación de contenido",
+    text: "Dirección creativa y lineamientos para contenido auténtico y estratégico.",
+    color: "bg-fuchsia-500",
+  },
+  {
+    number: "06",
+    title: "Medición de impacto y optimización",
+    text: "Análisis de resultados, insights accionables y mejora continua.",
+    color: "bg-fuchsia-400",
+  },
+  {
+    number: "07",
+    title: "Seguimiento y control de calidad",
+    text: "Monitoreo continuo del desempeño y cumplimiento de estándares.",
+    color: "bg-pink-500",
+  },
+];
 
   return (
     <section id="nuestro-metodo" className="py-28 bg-neutral-950 text-white">

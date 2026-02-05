@@ -3,6 +3,7 @@
 import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
+import DownloadButton from "@/componets/DownloadButton";
 
 /* =======================
     CARRUSEL INFINITO
@@ -130,10 +131,14 @@ export default function ColaboracionesPage() {
           CONTENIDO
       ======================= */}
       <section className="max-w-7xl mx-auto px-6 py-32">
-        <p className="text-white/70 max-w-2xl text-lg leading-relaxed mb-32">
-          Talento y marcas con las que hemos desarrollado campañas, estrategias
-          y procesos de crecimiento dentro del ecosistema digital.
-        </p>
+  <div className="flex flex-col gap-10 md:flex-row md:items-center md:justify-between mb-32">
+    <p className="text-white/70 max-w-2xl text-lg leading-relaxed">
+      Talento y marcas con las que hemos desarrollado campañas, estrategias
+      y procesos de crecimiento dentro del ecosistema digital.
+    </p>
+
+    <DownloadButton />
+  </div>
 
         {/* =======================
             CARRUSELES
