@@ -1,6 +1,6 @@
 import ScrollReveal from "./ScrollReveal";
 import Image from "next/image";
-import backgroundImage from "@/public/images/steps-bg.jpg"; // Fondo borroso
+import backgroundImage from "@/public/images/fondo3.jpeg"; // Fondo borroso
 import mainImage from "@/public/images/publi-modified.png"; // Imagen principal encima
 
 export default function HighlightOverlaySection() {
