@@ -29,7 +29,17 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Manrope", system-ui, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Landre", system-ui, sans-serif;
+  font-weight: 400;
 }
 
 /* ===============================
@@ -355,10 +365,13 @@ body {
   -ms-overflow-style: none;
 }
 @keyframes blink {
-  0%, 50%, 100% {
+  0%,
+  50%,
+  100% {
     opacity: 1;
   }
-  25%, 75% {
+  25%,
+  75% {
     opacity: 0;
   }
 }
@@ -367,17 +380,25 @@ body {
   animation: blink 1s infinite;
 }
 
+/* ======================
+   LANDRE – DISPLAY
+====================== */
 @font-face {
-  font-family: "Manrope";
-  src: url("/fonts/manrope/Manrope-Light.ttf") format("truetype");
-  font-weight: 300;
+  font-family: "Landre";
+  src:
+    url("/fonts/landre/landre-regular.otf") format("opentype"),
+    url("/fonts/landre/landre-regular.ttf") format("truetype");
+  font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
+/* ======================
+   MANROPE – TEXT
+====================== */
 @font-face {
   font-family: "Manrope";
-  src: url("/fonts/manrope/Manrope-Regular.ttf") format("truetype");
+  src: url("/fonts/landre/Manrope-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -385,7 +406,7 @@ body {
 
 @font-face {
   font-family: "Manrope";
-  src: url("/fonts/manrope/Manrope-Medium.ttf") format("truetype");
+  src: url("/fonts/landre/Manrope-Medium.ttf") format("truetype");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -393,7 +414,7 @@ body {
 
 @font-face {
   font-family: "Manrope";
-  src: url("/fonts/manrope/Manrope-SemiBold.ttf") format("truetype");
+  src: url("/fonts/landre/Manrope-SemiBold.ttf") format("truetype");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -401,21 +422,8 @@ body {
 
 @font-face {
   font-family: "Manrope";
-  src: url("/fonts/manrope/Manrope-Bold.ttf") format("truetype");
+  src: url("/fonts/landre/Manrope-Bold.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
-
-@font-face {
-  font-family: "Manrope";
-  src: url("/fonts/manrope/Manrope-ExtraBold.ttf") format("truetype");
-  font-weight: 800;
-  font-style: normal;
-  font-display: swap;
-}
-html,
-body {
-  font-family: "Manrope", system-ui, sans-serif;
-}
-

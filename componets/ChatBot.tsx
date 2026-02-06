@@ -2,65 +2,72 @@
 
 import { useChat } from "./ChatContext";
 import { useState, useRef, useEffect } from "react";
-import { chatTraining } from "./chatTraining";
 
-/* =========================
-   FUNCIÓN DE RESPUESTA
-========================= */
-const getBotResponse = (message: string) => {
-  const text = message.toLowerCase();
-
-  for (const item of chatTraining) {
-    if (item.keywords.some((k) => text.includes(k))) {
-      return item.answer;
-    }
-  }
-
-  return "🤔 No entendí del todo, pero puedo ayudarte a cotizar servicios de publicidad, branding, redes sociales o páginas web.";
+type Message = {
+  role: "system" | "user" | "assistant";
+  content: string;
 };
 
 export default function ChatBot() {
   const { open, setOpen } = useChat();
-  const [messages, setMessages] = useState<
-    { sender: "user" | "bot"; text: string }[]
-  >([
+
+  const [messages, setMessages] = useState<Message[]>([
     {
-      sender: "bot",
-      text: "👋 Hola, soy Iskra. Estoy aquí para ayudarte a cotizar o resolver dudas sobre publicidad. ¿Qué te gustaría hacer?",
+      role: "system",
+      content: `
+Eres Iskra, el asistente virtual de Iskra Agency.
+Ayudas a cotizar servicios de publicidad, branding, redes sociales y desarrollo web.
+Hablas de forma clara, moderna y profesional.
+Cuando detectes interés comercial, invita a agendar una llamada.
+`,
+    },
+    {
+      role: "assistant",
+      content:
+        "👋 Hola, soy Iskra. Estoy aquí para ayudarte a cotizar o resolver dudas sobre publicidad. ¿Qué te gustaría hacer?",
     },
   ]);
 
   const [input, setInput] = useState("");
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  /* =========================
-     AUTO SCROLL
-  ========================= */
+  /* AUTOSCROLL */
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  /* =========================
-     ENVIAR MENSAJE
-  ========================= */
-  const handleSend = () => {
+  /* ENVIAR MENSAJE */
+  const handleSend = async () => {
     if (!input.trim()) return;
 
-    const userMessage = input;
+    const userMessage: Message = {
+      role: "user",
+      content: input,
+    };
 
-    setMessages((prev) => [...prev, { sender: "user", text: userMessage }]);
-
+    const updatedMessages = [...messages, userMessage];
+    setMessages(updatedMessages);
     setInput("");
 
-    setTimeout(() => {
+    try {
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ messages: updatedMessages }),
+      });
+
+      const data = await res.json();
+
+      setMessages((prev) => [...prev, data.message]);
+    } catch (error) {
       setMessages((prev) => [
         ...prev,
         {
-          sender: "bot",
-          text: getBotResponse(userMessage),
+          role: "assistant",
+          content: "⚠️ Ocurrió un error. Intenta nuevamente.",
         },
       ]);
-    }, 500);
+    }
   };
 
   if (!open) return null;
@@ -80,24 +87,26 @@ export default function ChatBot() {
 
       {/* MENSAJES */}
       <div className="flex-1 p-4 overflow-y-auto space-y-3">
-        {messages.map((msg, idx) => (
-          <div
-            key={idx}
-            className={`flex ${
-              msg.sender === "user" ? "justify-end" : "justify-start"
-            }`}
-          >
+        {messages
+          .filter((m) => m.role !== "system")
+          .map((msg, idx) => (
             <div
-              className={`rounded-xl px-4 py-2 max-w-[75%] text-sm break-words ${
-                msg.sender === "user"
-                  ? "bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg"
-                  : "bg-white/90 text-black shadow"
+              key={idx}
+              className={`flex ${
+                msg.role === "user" ? "justify-end" : "justify-start"
               }`}
             >
-              {msg.text}
+              <div
+                className={`rounded-xl px-4 py-2 max-w-[75%] text-sm break-words ${
+                  msg.role === "user"
+                    ? "bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg"
+                    : "bg-white/90 text-black shadow"
+                }`}
+              >
+                {msg.content}
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
         <div ref={messagesEndRef} />
       </div>
 
@@ -113,7 +122,7 @@ export default function ChatBot() {
         />
         <button
           onClick={handleSend}
-          className="shrink-0 w-12 h-12 flex items-center justify-center rounded-full bg-cyan-500 hover:bg-cyan-600 text-white transition"
+          className="w-12 h-12 flex items-center justify-center rounded-full bg-cyan-500 hover:bg-cyan-600 text-white transition"
         >
           ➤
         </button>
